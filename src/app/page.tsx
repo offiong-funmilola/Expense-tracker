@@ -2,9 +2,11 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1>Hello, Next.js!</h1>
-      <p>Expenxe Tracker project</p>
+    <div className="h-[80vh] flex items-center justify-center">
+      <div className="w-1/2 h-1/2 flex flex-col items-center justify-center">
+        <h1 className="text-purple-600 text-4xl font-bold font-sans">Manage your finance</h1>
+        <p className="text-xl text-black font-sans">Be in control of your expenses</p>
+      </div>
     </div>
   );
 }
