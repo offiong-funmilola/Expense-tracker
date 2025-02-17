@@ -1,19 +1,22 @@
-
+import NotFound from "@/components/error";
 import { budgets } from "@/utils/data";
+import { ReactNode } from "react";
+
 interface Params {
     budgetId: number;
 }
 
 export default async function BudgetDetailsPage({
-    params,
-  }: {
-    params: Promise<{ budgetId: number}>
-  }) {
+    params
+}: { params: Params }): Promise<ReactNode> {
     //fetching data
     // const budget = await fetch('/budegt.Id')
     const budgetId = (await params).budgetId
     
-    const budget = budgets[budgetId]
+    const budget = budgets.find(x => x.id === Number(budgetId))
+    if (!budget) {
+        return <NotFound />
+    }
     const totalIncome: number = budget.income.reduce((acc, curr) => acc + curr.amount, 0)
     const totalExpenditure: number = budget.expenses.reduce((acc, curr) => acc + curr.amount, 0)
     return (
