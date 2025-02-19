@@ -11,8 +11,7 @@ export default function Navbar() {
         <Link href='/login' className={segment == 'login' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}>Login</Link>
         <Link href='/signup' className={segment == 'signup' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}>Signup</Link>
         <Link href='/about' className={segment == 'login' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}>About</Link>
-
-        <Link href='' className={segment == '' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}>Blog</Link>
+        <Link href='/blog' className={segment == '' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}>Blog</Link>
         {/* <Link href='' className=''>Dashboard</Link> */}
         
       </div>
