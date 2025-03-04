@@ -1,0 +1,15 @@
+export interface CategoryData {
+    id: string,
+    category_group_id: string,
+    category_group_name: string,
+    name: string,
+    hidden: boolean,
+    original_category_group_id: null,
+    note: null,
+    budgeted: number,
+    activity: number,
+    balance: number,
+    deleted: boolean,
+    goal_target: number,
+    goal_creation_month: string,
+}
