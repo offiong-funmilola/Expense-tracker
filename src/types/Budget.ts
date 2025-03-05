@@ -2,7 +2,7 @@ import { expense } from "./BudgetItem";
 import { Income } from "./Income";
 
 export interface Budget {
-    id: string;
+    id: number;
     userId: string;
     description: string | null;
     createdAt: Date;
