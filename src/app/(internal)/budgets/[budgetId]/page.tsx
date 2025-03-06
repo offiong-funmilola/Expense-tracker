@@ -1,29 +1,42 @@
 import NotFound from "@/components/error";
-import { budgets } from "@/utils/data";
+import { BudgetData } from "@/types/BudgetData";
+import { CategoryData } from "@/types/CategoryData";
+import { CategoryGroupData } from "@/types/CategoryGroupData";
+//import { budgets } from "@/utils/data";
 import { ReactNode } from "react";
+//import { Budget } from "@/types/Budget";
 
 interface Params {
-    budgetId: number;
+    budgetId: string;
 }
 
 export default async function BudgetDetailsPage({
     params
 }: { params: Params }): Promise<ReactNode> {
-    //fetching data
-    // const budget = await fetch('/budegt.Id')
     const budgetId = (await params).budgetId
-    
-    const budget = budgets.find(x => x.id === Number(budgetId))
+    //fetching data
+    const data = await fetch(`https://api.ynab.com/v1/budgets/${budgetId}/categories`, {
+        headers: {
+          Authorization: `Bearer ${process.env.API_KEY}`,
+        }})
+    const budget: BudgetData = await data.json()
+    console.log(budget)
+
+    const allCategories = budget.data.category_groups.reduce(
+        (acc: Array<CategoryData>, current: CategoryGroupData) => [...acc, ...current.categories], 
+    [])
+
+
     if (!budget) {
         return <NotFound />
     }
-    const totalIncome: number = budget.income.reduce((acc, curr) => acc + curr.amount, 0)
-    const totalExpenditure: number = budget.expenses.reduce((acc, curr) => acc + curr.amount, 0)
+    // const totalIncome: number = budget.income.reduce((acc, curr) => acc + curr.amount, 0)
+    // const totalExpenditure: number = budget.expenses.reduce((acc, curr) => acc + curr.amount, 0)
     return (
         <main className="w-full h-full flex item-center justify-center">
             <div className="w-[75%] h-[98%] border border-gray-400 p-10">
-                <h1 className="text-center font-bold text-2xl">Budget details for the month of {budget.month}</h1>
-                <section className="w-full">
+                <h1 className="text-center font-bold text-2xl">Budget details for the month of</h1>
+                {/* <section className="w-full">
                     <h4 className="font-semibold text-xl font-sans mb-2">Source of Income</h4>
                     <div className="w-full">
                         <table className="w-1/4">
@@ -49,7 +62,7 @@ export default async function BudgetDetailsPage({
                                 </tfoot>    
                         </table>    
                     </div>
-                </section>
+                </section> */}
                 <section className="w-full">
                     <h4 className="font-semibold text-xl font-sans mb-2 mt-4">Expenditure details for the month</h4>
                     <div className="w-full">
@@ -62,22 +75,22 @@ export default async function BudgetDetailsPage({
                                         <th>Date</th>
                                     </tr>
                                 </thead>
-                                {budget.expenses.map((item) => (
+                                {allCategories.map((item) => (
                                 <tbody key={item.id} className="w-full text-center">
                                     <tr>
-                                        <td>{item.title}</td>
-                                        <td>{item.category}</td>
-                                        <td>{item.amount}</td>
-                                        <td>{`${item.createdAt.getDate()} / ${item.createdAt.getMonth()} / ${item.createdAt.getFullYear()}`}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.category_group_name}</td>
+                                        <td>{item.goal_target}</td>
+                                        <td>{item.goal_creation_month}</td>
                                     </tr>
                                 </tbody>
                                 ))}
-                                <tfoot className="w-full">
+                                {/* <tfoot className="w-full">
                                     <tr className="">
                                         <th scope='row' colSpan={2} className="text-center text-lg">Total Expenditure</th>
                                         <td className="text-center font-semibold">{totalExpenditure}</td>
                                     </tr>
-                                </tfoot>
+                                </tfoot> */}
                             </table>
                     
                     </div>
