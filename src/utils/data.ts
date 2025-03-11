@@ -3,7 +3,7 @@ import { User } from "@/types/User";
 import { Category } from "@/types/CategoryEnum";
 
 export const budget: Budget = {
-    id: 1,
+    id: "1",
     month: "March",
     description: "Budget for the month of October 2030",
     createdAt: new Date(),
@@ -150,7 +150,7 @@ export const user: User = {
 
 export const budgets: Array<Budget> = [
     {
-        id: 1,
+        id: "1",
         month: "March",
         description: "Budget for the month of October 2030",
         createdAt: new Date(),
@@ -288,7 +288,7 @@ export const budgets: Array<Budget> = [
         ]
     },
     {
-        id: 2,
+        id: "2",
         month: "April",
         description: "Budget for the month of October 2030",
         createdAt: new Date(),
@@ -426,7 +426,7 @@ export const budgets: Array<Budget> = [
         ]
     },
     {
-        id: 3,
+        id: "3",
         month: "May",
         description: "Budget for the month of October 2030",
         createdAt: new Date(),
@@ -564,7 +564,7 @@ export const budgets: Array<Budget> = [
         ]
     },
     {
-        id: 4,
+        id: "4",
         month: "June",
         description: "Budget for the month of October 2030",
         createdAt: new Date(),
