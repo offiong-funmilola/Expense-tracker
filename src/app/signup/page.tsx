@@ -1,8 +1,7 @@
-"use Client"
-import Link from 'next/link'
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faGoogle } from "@fortawesome/fontawesome-svg-core";
+'use client'
 
+import Link from 'next/link'
+import { handleSignIn } from '../../lib/auth';
 
 
 export default function SignupPage() {
@@ -16,25 +15,10 @@ export default function SignupPage() {
                         <label htmlFor="name">Name</label>
                         <input id='name' type='text' className="w-full py-3 px-5 border border-gray-500"></input>
                     </div>
-                    <div className="flex flex-col gap-1 text-lg font-sans">
-                        <label htmlFor="email">Email</label>
-                        <input id='email' type='email' className="w-full py-3 px-5 border border-gray-500"></input>
-                    </div>
-                    <div className="flex flex-col gap-1 text-lg font-sans">
-                        <label htmlFor="password">Password</label>
-                        <input id='password' type='password' className="w-full py-3 px-5 border border-gray-500"></input>
-                    </div>
                     <div className="w-full">
-                        <button className="bg-purple-600 w-full text-white text-center text-xl py-3 p">Sign Up</button>
+                        <button className="bg-purple-600 w-full text-white text-center text-xl py-3" onClick={handleSignIn}>Sign In with Google</button>
                     </div>
-                    {/* <div>
-                        <hr/>
-                        Or
-                        <hr/>
-                    </div>
-                    <div>
-                        <div><FontAwesomeIcon icon={faGoogle} /></div>
-                    </div> */}
+                    
                 </form>
                 
             </div>
