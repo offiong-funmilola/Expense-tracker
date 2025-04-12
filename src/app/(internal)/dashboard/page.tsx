@@ -2,10 +2,14 @@ import { ReactNode } from "react";
 import { budget } from "../../../utils/data";
 import { Search, ListFilter} from 'lucide-react';
 import Table from "@/components/table";
+import { handleSignIn, handleSignOut } from '../../../lib/auth';
+import { useSession } from 'next-auth/react';
+
 
 
 
 export default function BudgetDetailsPage() {
+    const { data: session } = useSession()
     const monthlyIncome:number = budget.income.reduce((acc, curr)=> {
         return acc + curr.amount
     }, 0)
