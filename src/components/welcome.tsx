@@ -2,20 +2,26 @@
 
 import { Bell, Search} from 'lucide-react';
 import { PrismaClient } from '@prisma/client';
+import {auth0} from '../lib/auth0'
+
+
 const prisma = new PrismaClient()
 
 export default async function Welcome() {
-  const user = await prisma.user.findUnique({
-    where: {
-      email: 'funmi@test@gmail.com'
-    }
-  })
+  const session = await auth0.getSession();
+  const user = session?.user
+  
+  // const user = await prisma.user.findUnique({
+  //   where: {
+  //     email: 'funmi@test@gmail.com'
+  //   }
+  // })
   
 
   return (
     <section className='w-full h-full flex items-center justify-between px-5'>
       <div className='w-2/3'>
-          <h1 className='text-4xl font-sans '>Hi{user ? ` ${user.name}!` : ','} Welcome back</h1>
+          <h1 className='text-4xl font-sans '>Hi {user ? ` ${user.name}!` : ','}Welcome back</h1>
           <p className='text-lg font-sans text-gray-400'>Get a details of your budget for the month</p>
       </div>
       <div className='w-1/3 flex items-center gap-5'>

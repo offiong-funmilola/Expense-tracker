@@ -1,10 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { handleSignIn } from '../../lib/auth';
+
 
 
 export default function SignupPage() {
+    const handleSignIn = () => {
+        //creating a new user
+    }
     return (
         <div className="h-[80vh] flex flex-col items-center justify-center gap-3">
             <div className="w-1/3 h-3/4 border border-purple-600 rounded-md flex flex-col items-center p-5 gap-2">

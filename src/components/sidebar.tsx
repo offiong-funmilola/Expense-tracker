@@ -4,8 +4,12 @@ import Link from 'next/link'
 import { Home,  ChartPie, Settings, CircleUserRound, HandCoins, LogOut} from 'lucide-react';
 
 
+
+
+
 export default function Sidebar() {
     const segment = useSelectedLayoutSegment()
+    
   return (
     <div className='w-full h-full flex flex-col py-5 gap-5 justify-between bg-white'>
     <nav className='w-full h-1/2 flex flex-col gap-5 bg-white'>
@@ -33,7 +37,7 @@ export default function Sidebar() {
             <Link href='/login' className={segment == 'login' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}><CircleUserRound size='40px'/></Link>
         </li>
         <li>
-            <Link href='/login' className={segment == 'login' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}><LogOut size='40px'/></Link>
+           <Link href="/auth/logout" className={segment == 'logout' ? "bg-white border rounded-md text-purple-600 py-2 px-3 font-semibold font-sans" : ""}><LogOut size='40px'/></Link>
         </li>  
       </ul>
     </nav>

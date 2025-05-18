@@ -2,6 +2,7 @@ import Sidebar from "@/components/sidebar"
 import Welcome from "@/components/welcome"
 
 
+
 export default function DashboardLayout({
     children,
   }: {
@@ -21,5 +22,5 @@ export default function DashboardLayout({
           </main>
         </div>
       </div>
-    )
+    ) 
   }
