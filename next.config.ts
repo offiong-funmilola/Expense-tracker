@@ -7,8 +7,11 @@ const nextConfig: NextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
+  // BASE_URL="http://localhost:3000"
   /* config options here */
 };
 
 export default nextConfig;
+
+

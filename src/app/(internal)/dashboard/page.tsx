@@ -2,15 +2,25 @@ import { ReactNode } from "react";
 import { budget } from "../../../utils/data";
 import { Search, ListFilter} from 'lucide-react';
 import Table from "@/components/table";
+import { redirect } from "next/navigation";
+import { auth0 } from "@/lib/auth0";
 
 
-
-export default function BudgetDetailsPage() {
+export default async function BudgetDetailsPage() {
+    // const { data: session } = useSession()
+    const session = await auth0.getSession();
+    const user = session?.user
+    
     const monthlyIncome:number = budget.income.reduce((acc, curr)=> {
         return acc + curr.amount
     }, 0)
     
     const totalExpenditure: number = budget.expenses.reduce((acc, curr) => acc + curr.amount, 0)
+
+    if(!user){
+        redirect('/')
+    }
+    
     return (
         <main className="w-full h-full flex flex-col gap-5 px-5">
             <section className="w-full h-[70%] grid grid-cols-3 gap-5">
